@@ -5,16 +5,16 @@
     <DataAnnotationsValidator />
     <ValidationSummary />
 
-    <InputText @bind-value="@AddBug.Title" placeholder="Enter Title"></InputText>
-    <InputText @bind-value="@AddBug.Description" placeholder="Enter Description"></InputText>
-    <InputNumber TValue="int" @bind-value="@AddBug.Priority" placeholder="Enter Priority"></InputNumber>
+    <InputText @bind-Value="@AddBug.Title" placeholder="Enter Title"></InputText>
+    <InputText @bind-Value="@AddBug.Description" placeholder="Enter Description"></InputText>
+    <InputNumber TValue="int" @bind-Value="@AddBug.Priority" placeholder="Enter Priority"></InputNumber>
 
     <button type="submit">Add Bug</button>
 </EditForm>
 
 @code
 {
-    public Bug AddBug { get; set; }
+    public Bug AddBug { get; set; } = new Bug();
 
     [Inject]
     public IBugService BugService { get; set; }
@@ -22,7 +22,7 @@
     [Inject]
     public NavigationManager NavService { get; set; }
 
-    protected void HandleValidSubmit()
+    public void HandleValidSubmit()
     {
         BugService.AddBug(AddBug);
 
